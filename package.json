@@ -1,0 +1,25 @@
+{
+  "name": "dash-dapp-autofaucet",
+  "version": "0.0.1",
+  "description": "A node express autofaucet api for dash powered by evolution / platform.",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/dashameter/dash-dapp-autofaucet.git"
+  },
+  "keywords": [
+    "dash",
+    "evolution"
+  ],
+  "author": "dashameter",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dashameter/dash-dapp-autofaucet/issues"
+  },
+  "homepage": "https://github.com/dashameter/dash-dapp-autofaucet#readme"
+}
