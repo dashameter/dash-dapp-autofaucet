@@ -1,6 +1,6 @@
-const functions = require('firebase-functions');
+const express = require('express')
 
-const express = require('express');
+const port = 5050
 
 const Dash = require('dash');
 
@@ -8,12 +8,12 @@ const cors = require('cors');
 
 const app = express();
 
-app.use(cors({ origin: true }));
+app.use(cors());
 
 const clientOpts = {
-  network: 'testnet',
+  network: 'evonet',
   wallet: {
-        mnemonic:"<seed with balance>"
+        mnemonic:"wrist ladder salute build walk other scrap stumble true hotel layer treat"
   }
 };
 
@@ -57,4 +57,6 @@ app.get('/drip/:address', async (req, res) => {
   }
 });
 
-exports.evofaucet = functions.https.onRequest(app);
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+})
