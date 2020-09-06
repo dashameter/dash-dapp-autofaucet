@@ -18,7 +18,7 @@ app.use(cors());
 const clientOpts = {
     network: 'evonet',
     wallet: {
-        mnemonic: "wrist ladder salute build walk other scrap stumble true hotel layer treat"
+        mnemonic: "buyer weather page ugly identify enjoy raccoon aerobic grief segment ill balance"
     }
 };
 
@@ -30,7 +30,13 @@ async function init() {
 async function getDrip(amount, toAddress) {
     try {
         const address = account.getUnusedAddress().address
-
+        console.log('new address:', address);
+        const accBalTotal = account.getTotalBalance();
+        const accBalUnconf = account.getUnconfirmedBalance()
+        const accBalConf = account.getConfirmedBalance()
+        console.log(`Total balance: ${accBalTotal}`)
+        console.log(`Unconfirmed balance: ${accBalUnconf}`)
+        console.log(`Confirmed balance: ${accBalConf}`)
         const transaction = account.createTransaction({
             recipients: [
                 {
@@ -48,6 +54,13 @@ async function getDrip(amount, toAddress) {
             ]
         });
 
+        /*
+        console.log('transaction:');
+        console.dir(transaction);
+
+        console.log('input script:');
+        console.dir(transaction.inputs[0]._script);
+         */
         const result = await account.broadcastTransaction(transaction);
 
         console.log('Transaction broadcast!\nTransaction ID:', result);
@@ -65,24 +78,24 @@ async function getDrip(amount, toAddress) {
 }
 
 app.get('/drip/:address', async (req, res) => {
-    try{
-    console.log("Regular Drip requested by:", req.params.address)
-    await getDrip(smallDripAmount, req.params.address);
-    res.status(200).send("Regular drop: " + req.params.address)
+    try {
+        console.log("Regular Drip requested by:", req.params.address)
+        await getDrip(smallDripAmount, req.params.address);
+        res.status(200).send("Regular drop: " + req.params.address)
     }
-    catch(e){
+    catch (e) {
         console.error('Something went wrong:', e);
         return res.status(200).send(e.message);
     }
 })
 
 app.get('/bigdrip/:address', async (req, res) => {
-    try{
-    console.log("Big Drip requested by:", req.params.address)
-    await getDrip(bigDripAmount, req.params.address);
-    res.status(200).send("Big drop: " + req.params.address)
+    try {
+        console.log("Big Drip requested by:", req.params.address)
+        await getDrip(bigDripAmount, req.params.address);
+        res.status(200).send("Big drop: " + req.params.address)
     }
-    catch(e){
+    catch (e) {
         console.error('Something went wrong:', e);
         return res.status(200).send(e.message);
     }
