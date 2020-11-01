@@ -18,7 +18,7 @@ app.use(cors());
 const clientOpts = {
     network: 'evonet',
     wallet: {
-        mnemonic: "pig egg make weekend essence rug chapter gift grow juice end mean"
+        mnemonic: "hurdle ribbon adult wear fetch deal wedding involve history swear satisfy relax"
     }
 };
 

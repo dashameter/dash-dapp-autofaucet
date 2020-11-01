@@ -3,7 +3,7 @@ const Dash = require('dash');
 const clientOpts = {
     network: 'evonet',
     wallet: {
-        mnemonic: "pig egg make weekend essence rug chapter gift grow juice end mean"
+        mnemonic: "hurdle ribbon adult wear fetch deal wedding involve history swear satisfy relax"
     }
 };
 
@@ -42,5 +42,5 @@ async function sendFunds(amount, toAddress) {
 }
 
 (async () => {
-    await sendFunds(1000000, 'yiW6qQErG4tuUQVvpsUScveTg698KEZ3dR')
+    await sendFunds(1000000, 'yRRFT8fR8EtXnMBC6VofbiZf2bNm1e39yS')
 })()
