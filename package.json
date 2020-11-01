@@ -21,7 +21,8 @@
   },
   "homepage": "https://github.com/dashameter/dash-dapp-autofaucet#readme",
   "dependencies": {
-  "cors": "^2.8.5",
-  "dash": "^3.14.1",
-  "express": "^4.17.1"
+    "cors": "^2.8.5",
+    "dash": "^3.16.1",
+    "express": "^4.17.1"
+  }
 }
