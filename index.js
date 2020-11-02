@@ -18,7 +18,7 @@ app.use(cors());
 const clientOpts = {
     network: 'evonet',
     wallet: {
-        mnemonic: "hurdle ribbon adult wear fetch deal wedding involve history swear satisfy relax"
+        mnemonic: "nominee bulb antenna various sheriff maid umbrella sure fun boss angle cattle"
     }
 };
 
