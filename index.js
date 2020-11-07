@@ -18,7 +18,7 @@ app.use(cors());
 const clientOpts = {
     network: 'evonet',
     wallet: {
-        mnemonic: "nominee bulb antenna various sheriff maid umbrella sure fun boss angle cattle"
+        mnemonic: "runway squeeze away eternal hope slice fatal tooth color alert bird upper"
     }
 };
 

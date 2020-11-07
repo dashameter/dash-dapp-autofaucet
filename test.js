@@ -3,7 +3,7 @@ const Dash = require('dash');
 const clientOpts = {
     network: 'evonet',
     wallet: {
-        mnemonic: "nominee bulb antenna various sheriff maid umbrella sure fun boss angle cattle"
+        mnemonic: "runway squeeze away eternal hope slice fatal tooth color alert bird upper"
     }
 };
 
@@ -42,5 +42,5 @@ async function sendFunds(amount, toAddress) {
 }
 
 (async () => {
-    await sendFunds(1000000, 'yQwjgYuioLb9CBKJAmvQuP5HZYj3HtpRmW')
+    await sendFunds(1000000, 'yckikRCY7bNb467VWKX2ZhjKvh1MbKoy3H')
 })()
