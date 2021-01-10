@@ -15,22 +15,32 @@ const bigDripAmount = 100000000;
 
 app.use(cors());
 
-const clientOpts = {
-    network: 'evonet',
+// console.log('process.env :>> ', process.env);
+
+ let clientOpts = {
+    dapiAddresses: process.env.NUXT_DAPIADDRESSES ? JSON.parse(process.env.NUXT_DAPIADDRESSES) : undefined,
     wallet: {
-        mnemonic: "runway squeeze away eternal hope slice fatal tooth color alert bird upper"
+        mnemonic: process.env.NUXT_MNEMONIC
     }
 };
+
+// remove undefined keys
+clientOpts = JSON.parse(JSON.stringify(clientOpts))
+
+console.log('clientOpts :>> ', clientOpts);
 
 async function init() {
     client = new Dash.Client(clientOpts);
     account = await client.wallet.getAccount();
+        const address = account.getUnusedAddress().address
+        console.log('new faucet funding address:', address);
+        console.log('remaining balance: ', account.getTotalBalance())
 }
 
 async function getDrip(amount, toAddress) {
     try {
         const address = account.getUnusedAddress().address
-        console.log('new address:', address);
+        console.log('new faucet funding address:', address);
         const accBalTotal = account.getTotalBalance();
         const accBalUnconf = account.getUnconfirmedBalance()
         const accBalConf = account.getConfirmedBalance()

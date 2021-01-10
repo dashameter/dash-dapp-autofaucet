@@ -15,6 +15,9 @@
     "evolution"
   ],
   "author": "dashameter",
+  "contributors": [
+    { "name" : "cloudwheels"}
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/dashameter/dash-dapp-autofaucet/issues"
