@@ -30,11 +30,24 @@ clientOpts = JSON.parse(JSON.stringify(clientOpts))
 console.log('clientOpts :>> ', clientOpts);
 
 async function init() {
-    client = new Dash.Client(clientOpts);
-    account = await client.wallet.getAccount();
+    try {
+        client = new Dash.Client(clientOpts);
+        account = await client.wallet.getAccount();
         const address = account.getUnusedAddress().address
         console.log('new faucet funding address:', address);
-        console.log('remaining balance: ', account.getTotalBalance())
+        const accBalTotal = account.getTotalBalance();
+        const accBalUnconf = account.getUnconfirmedBalance()
+        const accBalConf = account.getConfirmedBalance()
+        console.log(`Total balance: ${accBalTotal}`)
+        console.log(`Unconfirmed balance: ${accBalUnconf}`)
+        console.log(`Confirmed balance: ${accBalConf}`)
+    }
+    catch (e) {
+        console.log('Init error', e)
+        process.exit(1)
+
+        // throw e
+    }
 }
 
 async function getDrip(amount, toAddress) {
@@ -77,6 +90,9 @@ async function getDrip(amount, toAddress) {
 
         return;
     } catch (e) {
+        console.error('getDrip Error:',e)
+        console.dir(e, { depth: 100})
+        
         throw e;
     }
     /*
@@ -94,8 +110,10 @@ app.get('/drip/:address', async (req, res) => {
         res.status(200).send("Regular drop: " + req.params.address)
     }
     catch (e) {
-        console.error('Something went wrong:', e);
-        return res.status(200).send(e.message);
+        console.error('app.get() drip error:', e);
+        console.dir(e, {depth:100})
+        res.status(200).send(e.message);
+        process.exit(1)
     }
 })
 
@@ -106,8 +124,10 @@ app.get('/bigdrip/:address', async (req, res) => {
         res.status(200).send("Big drop: " + req.params.address)
     }
     catch (e) {
-        console.error('Something went wrong:', e);
-        return res.status(200).send(e.message);
+        console.error('app.get() bigdrip error:', e);
+        console.dir(e, {depth:100})
+        res.status(200).send(e.message);
+        process.exit(1)
     }
 })
 
@@ -115,9 +135,10 @@ app.listen(port, async () => {
     try {
         console.log('initialising');
         await init();
-        console.log(`Example app listening at http://localhost:${port}`);
+        console.log(`Autofaucet listening at http://localhost:${port}`);
     }
     catch (e) {
-        console.log(e);
+        console.log('Error caught from app.listen()', e);
+        process.exit(1)
     }
 })

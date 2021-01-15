@@ -4,6 +4,7 @@
   "description": "A node express autofaucet api for dash powered by evolution / platform.",
   "main": "index.js",
   "scripts": {
+    "start": "node_modules/pm2/bin/pm2 --exp-backoff-restart-delay 2000 start index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,7 +17,9 @@
   ],
   "author": "dashameter",
   "contributors": [
-    { "name" : "cloudwheels"}
+    {
+      "name": "cloudwheels"
+    }
   ],
   "license": "MIT",
   "bugs": {
@@ -25,7 +28,8 @@
   "homepage": "https://github.com/dashameter/dash-dapp-autofaucet#readme",
   "dependencies": {
     "cors": "^2.8.5",
-    "dash": "^3.16.1",
-    "express": "^4.17.1"
+    "dash": "^3.17.0",
+    "express": "^4.17.1",
+    "pm2": "^4.5.1"
   }
 }
