@@ -4,7 +4,7 @@
   "description": "A node express autofaucet api for dash powered by evolution / platform.",
   "main": "index.js",
   "scripts": {
-    "start": "node_modules/pm2/bin/pm2 --exp-backoff-restart-delay 2000 start index.js",
+    "start": "node_modules/pm2/bin/pm2 --exp-backoff-restart-delay 2000 start index.js --name autofaucet",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
