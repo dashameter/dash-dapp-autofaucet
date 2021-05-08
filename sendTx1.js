@@ -45,10 +45,13 @@ const sleep =  (ms) => new Promise((resolve)=>{setTimeout(resolve,ms)})
 const sendTxLoop = async() => {
     sendTx()
     await sleep(60000)
+    sendTxLoop()
 }
 
 async function init() {
     try {
+        retryCounter = 0
+
         client = new Dash.Client(clientOpts);
         
         console.log('mnemonic: ', client.wallet.exportWallet())
@@ -68,15 +71,17 @@ async function init() {
         console.log(`Total balance: ${accBalTotal}`)
         console.log(`Unconfirmed balance: ${accBalUnconf}`)
         console.log(`Confirmed balance: ${accBalConf}`)
+        console.log(Date(), "Staring sendTxLoop")
         sendTxLoop()
     }
     catch (e) {
         console.error(Date(), 'Init error', e)
+        console.dir(e, {depth: 100})
         process.exit(1)
     }
 }
 
-const sendTx = async (amount, toAddress) => {
+const sendTx = async () => {
     try {
         const accBalTotal = account.getTotalBalance();
         
@@ -99,7 +104,7 @@ const sendTx = async (amount, toAddress) => {
 
         const result = await timeFunction(account.broadcastTransaction(transaction))
 
-        console.log('Transaction broadcast!\nTransaction ID:', result);
+        console.log(Date(), 'Transaction broadcast!\nTransaction ID:', result);
 
         return;
     } catch (e) {
