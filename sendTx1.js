@@ -23,14 +23,15 @@ const timeFunction = async (promiseToTime) => {
 }
 
 let clientOpts = {
+    network: "testnet",
     unsafeOptions: {
       skipSynchronizationBeforeHeight: 495209,
     },
-    dapiAddresses: [
-    '34.220.41.134',
-    '18.236.216.191',
-    '54.191.227.118',
-  ],
+//     dapiAddresses: [
+//     '34.220.41.134',
+//     '18.236.216.191',
+//     '54.191.227.118',
+//   ],
     wallet: {
         // mnemonic: null
         mnemonic: 'fever empty hotel donor chase funny photo honey economy near filter confirm' //receiving address yhehrX13jHPPanTxWiXxGEbz4S8RZ7PsbW
