@@ -104,6 +104,8 @@ const sendTx = async () => {
         });
 
         const result = await timeFunction(account.broadcastTransaction(transaction))
+        
+        console.log('broadcasting transaction... :>> ', transaction);
 
         console.log(Date(), 'Transaction broadcast!\nTransaction ID:', result);
 

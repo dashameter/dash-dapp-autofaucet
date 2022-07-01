@@ -28,8 +28,10 @@
   "homepage": "https://github.com/dashameter/dash-dapp-autofaucet#readme",
   "dependencies": {
     "cors": "^2.8.5",
-    "dash": "^3.21.2",
+    "dash": "^3.22.12",
+    "dotenv": "^16.0.1",
     "express": "^4.17.1",
+    "nodeforage": "^1.1.1",
     "pm2": "^4.5.1"
   }
 }

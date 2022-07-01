@@ -102,6 +102,8 @@ const sendTx = async () => {
                 },
             ]
         });
+        
+        console.log('broadcasting transaction... :>> ', transaction.toJSON());
 
         const result = await timeFunction(account.broadcastTransaction(transaction))
 
